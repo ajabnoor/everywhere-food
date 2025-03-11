@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ session('locale', 'en') }}" dir="{{ session('locale', 'en') == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,8 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -22,7 +23,11 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    @if (App::isLocale('ar'))
+        <link rel="stylesheet" href="{{ asset('css/rtl.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('css/ltr.css') }}">
+    @endif
 </head>
 
 <body>
@@ -36,9 +41,13 @@
                     <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
                 </div>
             </div>
+
             <div class="col-lg-6 text-center text-lg-right">
+                
+                <a href="{{ url('/lang/en') }}">English</a> {{ App::getLocale() }}| <a href="{{ url('/lang/ar') }}">العربية</a>
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="">
+
+                    {{-- <a class="text-white px-2" href="">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                     <a class="text-white px-2" href="">
@@ -52,7 +61,7 @@
                     </a>
                     <a class="text-white pl-2" href="">
                         <i class="fab fa-youtube"></i>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
@@ -84,7 +93,7 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Get A Quote</a>
+                <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">{{ __('messages.get_a_quote') }}</a>
             </div>
         </nav>
     </div>
@@ -98,7 +107,8 @@
             <h1 class="text-white display-3 mb-5">Logistics Services</h1>
             <div class="mx-auto" style="width: 100%; max-width: 600px;">
                 <div class="input-group">
-                    <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Tracking Id">
+                    <input type="text" class="form-control border-light" style="padding: 30px;"
+                        placeholder="Tracking Id">
                     <div class="input-group-append">
                         <button class="btn btn-primary px-3">Track & Trace</button>
                     </div>
@@ -122,7 +132,9 @@
                 <div class="col-lg-7">
                     <h6 class="text-primary text-uppercase font-weight-bold">About Us</h6>
                     <h1 class="mb-4">Trusted & Faster Logistic Service Provider</h1>
-                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit
+                        rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat
+                        duo eos et erat sed diam duo</p>
                     <div class="d-flex align-items-center pt-2">
                         <button type="button" class="btn-play" data-toggle="modal"
                             data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
@@ -134,16 +146,18 @@
             </div>
         </div>
         <!-- Video Modal -->
-        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                        </button>        
+                        </button>
                         <!-- 16:9 aspect ratio -->
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                            <iframe class="embed-responsive-item" src="" id="video"
+                                allowscriptaccess="always" allow="autoplay"></iframe>
                         </div>
                     </div>
                 </div>
@@ -160,7 +174,9 @@
                 <div class="col-lg-7 py-5 py-lg-0">
                     <h6 class="text-primary text-uppercase font-weight-bold">Get A Quote</h6>
                     <h1 class="mb-4">Request A Free Quote</h1>
-                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit
+                        rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat
+                        duo eos et erat sed diam duo</p>
                     <div class="row">
                         <div class="col-sm-4">
                             <h1 class="text-primary mb-2" data-toggle="counter-up">225</h1>
@@ -180,10 +196,12 @@
                     <div class="bg-primary py-5 px-4 px-sm-5">
                         <form class="py-5">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 p-4" placeholder="Your Name" required="required" />
+                                <input type="text" class="form-control border-0 p-4" placeholder="Your Name"
+                                    required="required" />
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control border-0 p-4" placeholder="Your Email" required="required" />
+                                <input type="email" class="form-control border-0 p-4" placeholder="Your Email"
+                                    required="required" />
                             </div>
                             <div class="form-group">
                                 <select class="custom-select border-0 px-4" style="height: 47px;">
@@ -194,7 +212,8 @@
                                 </select>
                             </div>
                             <div>
-                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Get A Quote</button>
+                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Get A
+                                    Quote</button>
                             </div>
                         </form>
                     </div>
@@ -261,11 +280,18 @@
                 <div class="col-lg-7 py-5 py-lg-0">
                     <h6 class="text-primary text-uppercase font-weight-bold">Why Choose Us</h6>
                     <h1 class="mb-4">Faster, Safe and Trusted Logistics Services</h1>
-                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                    <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit
+                        rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat
+                        duo eos et erat sed diam duo</p>
                     <ul class="list-inline">
-                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>Best In Industry</h6>
-                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>Emergency Services</h6></li>
-                        <li><h6><i class="far fa-dot-circle text-primary mr-3"></i>24/7 Customer Support</h6></li>
+                        <li>
+                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>Best In Industry</h6>
+                        <li>
+                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>Emergency Services</h6>
+                        </li>
+                        <li>
+                            <h6><i class="far fa-dot-circle text-primary mr-3"></i>24/7 Customer Support</h6>
+                        </li>
                     </ul>
                     <a href="" class="btn btn-primary mt-3 py-2 px-4">Learn More</a>
                 </div>
@@ -287,7 +313,10 @@
                     <div class="bg-secondary">
                         <div class="text-center p-4">
                             <h1 class="display-4 mb-0">
-                                <small class="align-top text-muted font-weight-medium" style="font-size: 22px; line-height: 45px;">$</small>49<small class="align-bottom text-muted font-weight-medium" style="font-size: 16px; line-height: 40px;">/Mo</small>
+                                <small class="align-top text-muted font-weight-medium"
+                                    style="font-size: 22px; line-height: 45px;">$</small>49<small
+                                    class="align-bottom text-muted font-weight-medium"
+                                    style="font-size: 16px; line-height: 40px;">/Mo</small>
                             </h1>
                         </div>
                         <div class="bg-primary text-center p-4">
@@ -306,7 +335,10 @@
                     <div class="bg-secondary">
                         <div class="text-center p-4">
                             <h1 class="display-4 mb-0">
-                                <small class="align-top text-muted font-weight-medium" style="font-size: 22px; line-height: 45px;">$</small>99<small class="align-bottom text-muted font-weight-medium" style="font-size: 16px; line-height: 40px;">/Mo</small>
+                                <small class="align-top text-muted font-weight-medium"
+                                    style="font-size: 22px; line-height: 45px;">$</small>99<small
+                                    class="align-bottom text-muted font-weight-medium"
+                                    style="font-size: 16px; line-height: 40px;">/Mo</small>
                             </h1>
                         </div>
                         <div class="bg-primary text-center p-4">
@@ -325,7 +357,10 @@
                     <div class="bg-secondary">
                         <div class="text-center p-4">
                             <h1 class="display-4 mb-0">
-                                <small class="align-top text-muted font-weight-medium" style="font-size: 22px; line-height: 45px;">$</small>149<small class="align-bottom text-muted font-weight-medium" style="font-size: 16px; line-height: 40px;">/Mo</small>
+                                <small class="align-top text-muted font-weight-medium"
+                                    style="font-size: 22px; line-height: 45px;">$</small>149<small
+                                    class="align-bottom text-muted font-weight-medium"
+                                    style="font-size: 16px; line-height: 40px;">/Mo</small>
                             </h1>
                         </div>
                         <div class="bg-primary text-center p-4">
@@ -363,10 +398,14 @@
                                 <span>Designation</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-dark btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-dark btn-social" href="#"><i
+                                        class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -380,10 +419,14 @@
                                 <span>Designation</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-dark btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-dark btn-social" href="#"><i
+                                        class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -397,10 +440,14 @@
                                 <span>Designation</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-dark btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-dark btn-social" href="#"><i
+                                        class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -414,10 +461,14 @@
                                 <span>Designation</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-dark btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a class="btn btn-outline-dark btn-social" href="#"><i
+                                        class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -437,48 +488,60 @@
             </div>
             <div class="owl-carousel testimonial-carousel">
                 <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                    <i class="fa fa-3x fa-quote-right text-primary position-absolute"
+                        style="top: -6px; right: 0;"></i>
                     <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg" style="width: 60px; height: 60px;" alt="">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-1.jpg"
+                            style="width: 60px; height: 60px;" alt="">
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold m-0">Client Name</h6>
                             <small>- Profession</small>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
+                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
+                        ipsum sanct clita</p>
                 </div>
                 <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                    <i class="fa fa-3x fa-quote-right text-primary position-absolute"
+                        style="top: -6px; right: 0;"></i>
                     <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg" style="width: 60px; height: 60px;" alt="">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-2.jpg"
+                            style="width: 60px; height: 60px;" alt="">
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold m-0">Client Name</h6>
                             <small>- Profession</small>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
+                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
+                        ipsum sanct clita</p>
                 </div>
                 <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                    <i class="fa fa-3x fa-quote-right text-primary position-absolute"
+                        style="top: -6px; right: 0;"></i>
                     <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-3.jpg" style="width: 60px; height: 60px;" alt="">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-3.jpg"
+                            style="width: 60px; height: 60px;" alt="">
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold m-0">Client Name</h6>
                             <small>- Profession</small>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
+                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
+                        ipsum sanct clita</p>
                 </div>
                 <div class="position-relative bg-secondary p-4">
-                    <i class="fa fa-3x fa-quote-right text-primary position-absolute" style="top: -6px; right: 0;"></i>
+                    <i class="fa fa-3x fa-quote-right text-primary position-absolute"
+                        style="top: -6px; right: 0;"></i>
                     <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid rounded-circle" src="img/testimonial-4.jpg" style="width: 60px; height: 60px;" alt="">
+                        <img class="img-fluid rounded-circle" src="img/testimonial-4.jpg"
+                            style="width: 60px; height: 60px;" alt="">
                         <div class="ml-3">
                             <h6 class="font-weight-semi-bold m-0">Client Name</h6>
                             <small>- Profession</small>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor ipsum sanct clita</p>
+                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr clita lorem. Dolor
+                        ipsum sanct clita</p>
                 </div>
             </div>
         </div>
@@ -506,7 +569,8 @@
                     <div class="bg-secondary" style="padding: 30px;">
                         <div class="d-flex mb-3">
                             <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="img/user.jpg" alt="">
+                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="img/user.jpg"
+                                    alt="">
                                 <a class="text-muted ml-2" href="">John Doe</a>
                             </div>
                             <div class="d-flex align-items-center ml-4">
@@ -515,8 +579,10 @@
                             </div>
                         </div>
                         <h4 class="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
-                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i class="fa fa-angle-right"></i></a>
+                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam
+                            dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
+                        <a class="border-bottom border-primary text-uppercase text-decoration-none"
+                            href="">Read More <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 mb-5">
@@ -531,7 +597,8 @@
                     <div class="bg-secondary" style="padding: 30px;">
                         <div class="d-flex mb-3">
                             <div class="d-flex align-items-center">
-                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="img/user.jpg" alt="">
+                                <img class="rounded-circle" style="width: 40px; height: 40px;" src="img/user.jpg"
+                                    alt="">
                                 <a class="text-muted ml-2" href="">John Doe</a>
                             </div>
                             <div class="d-flex align-items-center ml-4">
@@ -540,8 +607,10 @@
                             </div>
                         </div>
                         <h4 class="font-weight-bold mb-3">Kasd tempor diam sea justo dolor</h4>
-                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
-                        <a class="border-bottom border-primary text-uppercase text-decoration-none" href="">Read More <i class="fa fa-angle-right"></i></a>
+                        <p>Dolor sea ipsum ipsum et. Erat duo lorem magna vero dolor dolores. Rebum eirmod no dolor diam
+                            dolor amet ipsum. Lorem lorem sea sed diam est lorem magna</p>
+                        <a class="border-bottom border-primary text-uppercase text-decoration-none"
+                            href="">Read More <i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -561,19 +630,26 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
                         <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social" href="#"><i
+                                    class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-md-6 mb-5">
                         <h3 class="text-primary mb-4">Quick Links</h3>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing Plan</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About
+                                Us</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our
+                                Services</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing
+                                Plan</a>
                             <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
@@ -581,10 +657,12 @@
             </div>
             <div class="col-lg-5 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Newsletter</h3>
-                <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu kasd sed ea duo ipsum. Dolor duo eirmod sea justo no lorem est diam</p>
+                <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu
+                    kasd sed ea duo ipsum. Dolor duo eirmod sea justo no lorem est diam</p>
                 <div class="w-100">
                     <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 30px;" placeholder="Your Email Address">
+                        <input type="text" class="form-control border-light" style="padding: 30px;"
+                            placeholder="Your Email Address">
                         <div class="input-group-append">
                             <button class="btn btn-primary px-4">Sign Up</button>
                         </div>
@@ -593,14 +671,15 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: #3E3E4E !important;">
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+        style="border-color: #3E3E4E !important;">
         <div class="row">
             <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white">&copy; <a href="#">Your Site Name</a>. All Rights Reserved. 
-				
-				<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-				Designed by <a href="https://htmlcodex.com">HTML Codex</a>
-                <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                <p class="m-0 text-white">&copy; <a href="#">Your Site Name</a>. All Rights Reserved.
+
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">

@@ -55,7 +55,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   direction: rtl;
-    text-align: right;
+  text-align: right;
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -6167,6 +6167,8 @@ button.bg-light:focus {
 
 .bg-dark {
   background-color: #1F1F2E !important;
+  /* keep ltr here for arabic */
+  direction: ltr;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
+use App\Http\Middleware\SetLanguage;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -11,12 +13,13 @@ Route::get('/lang/{lang}', function ($lang) {
     if (!in_array($lang, ['en', 'ar'])) {
         abort(400); // Prevent invalid languages
     }
-
-    // Store the locale in the session (this should update the existing session row in the database)
-    session(['locale' => $lang]);
-
-    // Apply the language immediately
-    App::setLocale($lang);
-
-    return back(); // Redirect back to previous page
+   session(['locale'=> $lang]);
+   return redirect()->back();
 });
+
+// Route::get('/debug-locale', function () {
+//     return response()->json([
+//         'session_locale' => session('locale'),   // What’s stored in the session?
+//         'app_locale' => App::currentLocale(),       // What Laravel is actually using?
+//     ]);
+// });

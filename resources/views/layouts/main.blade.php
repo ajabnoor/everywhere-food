@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ session('locale', 'en') }}" dir="{{ session('locale', 'en') == 'ar' ? 'rtl' : 'ltr' }}">
+<html lang="{{ session('locale') }}" dir="{{ session('locale') == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    @if (App::isLocale('ar'))
+    @if (session('locale') == 'ar')
         <link rel="stylesheet" href="{{ asset('css/rtl.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('css/ltr.css') }}">
@@ -38,13 +38,13 @@
                 <div class="d-inline-flex align-items-center text-white">
                     <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
                     <small class="px-3">|</small>
-                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                    <small><i class="fa fa-envelope mr-2"></i>info@everywhere-food.com</small>
                 </div>
             </div>
 
             <div class="col-lg-6 text-center text-lg-right">
                 
-                <a href="{{ url('/lang/en') }}">English</a> {{ App::getLocale() }}| <a href="{{ url('/lang/ar') }}">العربية</a>
+                <a href="{{ url('/lang/en') }}">English</a> | <a href="{{ url('/lang/ar') }}">العربية</a>
                 <div class="d-inline-flex align-items-center">
 
                     {{-- <a class="text-white px-2" href="">
@@ -72,17 +72,18 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+            {{-- logo section here --}}
             <a href="index.html" class="navbar-brand ml-lg-3">
-                <h1 class="m-0 display-5 text-uppercase text-primary"><i class="fa fa-truck mr-2"></i>Faster</h1>
+                <img src={{ asset('img/logo.jpg') }} alt="everywhere food" class="img-fluid" style="height: 70px;">
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
                 <div class="navbar-nav m-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Service</a>
+                    <a href="index.html" class="nav-item nav-link active">{{ __('messages.home') }}</a>
+                    <a href="about.html" class="nav-item nav-link">{{ __('messages.about') }}</a>
+                    <a href="service.html" class="nav-item nav-link">{{ __('messages.service') }}</a>
                     <a href="price.html" class="nav-item nav-link">Price</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -91,7 +92,7 @@
                             <a href="single.html" class="dropdown-item">Blog Detail</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <a href="contact.html" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                 </div>
                 <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">{{ __('messages.get_a_quote') }}</a>
             </div>

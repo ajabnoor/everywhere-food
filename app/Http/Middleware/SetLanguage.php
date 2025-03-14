@@ -18,14 +18,9 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
-        // Retrieve the locale from session
-        $locale = Session::get('locale', 'ar');
-
-        // Log for debugging
-        // Log::info('Setting Locale:', ['locale' => $locale]);
-
-        // Apply the locale to Laravel
-        App::setLocale($locale);
+        if (session('locale')) {
+            App::setLocale(Session::get('locale'));
+        }
 
         return $next($request);
     }

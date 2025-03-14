@@ -12,11 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Ensure Laravel session is initialized first
-        $middleware->prepend(\Illuminate\Session\Middleware\StartSession::class);
-        
-        // Now apply language settings
-        $middleware->append(SetLanguage::class);
+        $middleware->web(append:[SetLanguage::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

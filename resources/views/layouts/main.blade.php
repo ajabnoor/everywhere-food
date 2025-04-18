@@ -36,9 +36,9 @@
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                    <small><i class="fa fa-phone-alt mr-2"></i>{{ $setting->phone }}</small>
                     <small class="px-3">|</small>
-                    <small><i class="fa fa-envelope mr-2"></i>info@everywhere-food.com</small>
+                    <small><i class="fa fa-envelope mr-2"></i>{{ $setting->email }}</small>
                 </div>
             </div>
 
@@ -462,13 +462,13 @@
                                 <span>Designation</span>
                             </div>
                             <div class="team-social d-flex align-items-center justify-content-center bg-primary">
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                <a class="btn btn-outline-dark btn-social mr-2" href="{{ $setting->twitter }}"><i
                                         class="fab fa-twitter"></i></a>
-                                <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
+                                <a class="btn btn-outline-dark btn-social mr-2" href="{{ $setting->facebook }}"><i
                                         class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-outline-dark btn-social mr-2" href="#"><i
                                         class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-outline-dark btn-social" href="#"><i
+                                <a class="btn btn-outline-dark btn-social" href="{{ $setting->instagram }}"><i
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
@@ -627,17 +627,17 @@
                 <div class="row">
                     <div class="col-md-6 mb-5">
                         <h3 class="text-primary mb-4">Get In Touch</h3>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>{{ $setting->address }}</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>{{ $setting->phone }}</p>
+                        <p><i class="fa fa-envelope mr-2"></i>{{ $setting->email }}</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                            <a class="btn btn-outline-light btn-social mr-2" href="{{ $setting->twitter }}"><i
                                     class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social mr-2" href="#"><i
+                            <a class="btn btn-outline-light btn-social mr-2" href="{{ $setting->facebook }}"><i
                                     class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-outline-light btn-social mr-2" href="#"><i
                                     class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light btn-social" href="#"><i
+                            <a class="btn btn-outline-light btn-social" href="{{ $setting->instagram }}"><i
                                     class="fab fa-instagram"></i></a>
                         </div>
                     </div>
